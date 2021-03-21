@@ -30,7 +30,6 @@ void add ( bst_node ** root, char * word ) {
  
 void inorder (bst_node * root ) {
     inorderRec(root);
-    //printf("\n");
 }
 
 
@@ -57,56 +56,6 @@ void inorderRec(bst_node* root){
 
 }
 
-
-/*
-remove the smallest node
-
-Case 0:
-    tree has one node only (no parent)
-
-    "1"
-
-
-Case 1:
-         
-         10
-
-       8    11
-
-    6
-
-Case 2:
-
-         "10"
-
-       "8"    "11"
-
-    "6"
-
-      7
-
- ==>
-
-
-          10
-
-       8    11
-
-    7
-
-case 3:
-    "10"
-
-        "11"
-=>delete the root
-
-The new root is "11"
-
-
-
-The smallest node is the left-most node of the tree
-
-*/
 char * removeSmallest (  bst_node ** root ){
 	return removeSmallestRec(NULL, root);
 }
@@ -131,9 +80,6 @@ char * removeSmallestRec(bst_node** parent,  bst_node **root ){
 				*root = NULL;
 			}else
 			{//case 2: root has right child
-
-				//printf ("case 2\n");
-
 				if (*parent == NULL){//delete the root
 
 					if ((*root)->right != NULL){//case 3: if root has right child
@@ -146,23 +92,15 @@ char * removeSmallestRec(bst_node** parent,  bst_node **root ){
 						*root = NULL;
 					}
 				}else{
-
-					//printf("has parent %s\n", parent->data);
 					bst_node* rightChild = (*root)->right;
-					
-
-					//printf("parent left: %s\n", parent->left->data);
-
 					free(*root);
 					*root = NULL;
-
 					(*parent)->left = rightChild;
 				}
 			}
 
 			return data;
 		}
-
 	}
     
     return NULL;
@@ -170,58 +108,9 @@ char * removeSmallestRec(bst_node** parent,  bst_node **root ){
 
  
 char * removeLargest (  bst_node ** root ){
-    
     return removeLargestRec(NULL, root);
 }
 
-/*
-recursive remove the largest node
-
-Case 0:
-    tree has one node only (no parent)
-
-    "1"
-
-
-Case 1:
-         
-         10
-
-       8    11
-
-               16
-
-Case 2:
-
-         "10"
-
-       "8"    "11"
-
-                  "16"
-
-              "12"
-
- ==>
-
-
-          10
-
-       8    11
-
-               12
-
-case 3:
-              "10"
-
-        "9"
-=>delete the root
-
-The new root is "9"
-
-
-
-The smallest node is the left-most node of the tree
-*/
 char * removeLargestRec(bst_node* parent,  bst_node **root ){
 
 	if (*root != NULL){
@@ -267,7 +156,6 @@ char * removeLargestRec(bst_node* parent,  bst_node **root ){
 	}
     
     return NULL;
-
 
 }
 
