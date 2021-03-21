@@ -95,7 +95,7 @@ char * removeSmallestRec(bst_node** parent,  bst_node **root ){
 					bst_node* rightChild = (*root)->right;
 					free(*root);
 					*root = NULL;
-					(*parent)->left = rightChild;
+					(*parent)->left = rightChild; //set the left child of parent to the right child of root (deleted node)
 				}
 			}
 
