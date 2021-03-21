@@ -68,10 +68,9 @@ int get_E ( float f ) {
     temp = temp & 0x7f800000; /*mask representation of the exponent*/
     temp = temp >>23; /*Shift the exponent to the right 23 bits beccause exponent in 23rd bit*/
     if(temp == 0) /* if the exponent is zero, its a special case (subnormal number)*/
-        return -126;
+        return -126; //return -126 if nan
      else if(temp == 0xff)
         return 0xff; /*return 255*/
     else
-        return (int)temp - 127; /*return the exponent if not a special case*/
-    
+        return (int)temp - 127; /*return the exponent if not a special case*/  
 }
